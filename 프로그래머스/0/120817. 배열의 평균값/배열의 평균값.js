@@ -1,4 +1,9 @@
 function solution(numbers) {
-    const arr = numbers.reduce((acc, cur) => acc + cur, 0)
-    return arr/numbers.length;
+    let sum = 0;
+    
+    for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+    }
+    
+    return sum/numbers.length
 }
