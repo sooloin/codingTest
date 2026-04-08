@@ -1,32 +1,32 @@
 function solution(array) {
-    let freqMap = new Map(); // 빈 맵 준비
+    let freqMap = new Map();
+    var answer = 0;
     
-    // 배열 순회
-    for (let i = 0; i < array.length; i++) {
+    // 1. 배열을 순회하며 요소 확인
+    array.forEach((el) => {
         let cnt = 1;
-        if (freqMap.has(array[i])) {
-            freqMap.set(array[i], freqMap.get(array[i])+1);
+        // 2. 요소 적어두고, 빈도수 카운트
+        if (freqMap.has(el)) {
+            freqMap.set(el, freqMap.get(el) + 1);
         } else {
-            freqMap.set(array[i], cnt);
-        }
-    
-    }
-    let maxFreq = 0;
-    let modeCandidate = 0;
-    let tieCount = 0;
-    
-    // Map 순회하며 조회
-    for (let [key, value] of freqMap) {
-        if (value > maxFreq) { 
-            maxFreq = value;
-            modeCandidate = key;
-            tieCount = 1;
-        } else if (value == maxFreq) {
-            tieCount++;
+            freqMap.set(el, cnt);
         }
         
+    });
+    
+    let maxCnt = 0;
+    let isDuplicate = false;
+    
+    for (let [key, cnt] of freqMap) {
+        
+        if (cnt > maxCnt) {
+            maxCnt = cnt;
+            answer = key;
+            isDuplicate = false;
+        } else if (cnt == maxCnt) {
+            isDuplicate = true;
+        }
     }
     
-    return (tieCount>=2) ? -1 : modeCandidate;
-    
+    return isDuplicate ? -1 : answer;
 }
