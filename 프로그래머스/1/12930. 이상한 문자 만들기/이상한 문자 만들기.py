@@ -5,13 +5,15 @@ def solution(s):
     index = 0
     
     for char in s:
+        index+=1
+        
         if char == ' ':
-            index = 1
+            index = 0
             
-        if index % 2 == 0:
+        if index % 2 == 1:
             answer.append(char.upper())
         else:
             answer.append(char.lower())
-        index+=1
+            
     
     return "".join(answer)
