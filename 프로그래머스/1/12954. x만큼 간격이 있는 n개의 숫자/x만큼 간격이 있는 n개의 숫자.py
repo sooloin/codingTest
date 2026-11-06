@@ -1,7 +1,2 @@
 def solution(x, n):
-    arr = []
-    num = x
-    for i in range(n):
-        arr.append(num)
-        num += x
-    return arr
+    return [x*i for i in range(1, n + 1)]
