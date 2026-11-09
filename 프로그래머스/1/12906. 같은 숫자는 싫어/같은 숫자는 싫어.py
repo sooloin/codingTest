@@ -1,10 +1,8 @@
 def solution(arr):
     answer = []
-    storage = -1
     
     for num in arr:
-        if storage != num:
+        if not answer or answer[-1] != num:
             answer.append(num)
-            storage = num
-
+    
     return answer
